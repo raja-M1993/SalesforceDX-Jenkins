@@ -18,9 +18,10 @@ node {
     withCredentials([file(credentialsId: JWT_KEY_CRED_ID, variable: 'jwt_key_file')]) {
         stage('Create Scratch Org') {
             echo toolbelt
-            echo $SFDC_HOST
-            echo $JWT_KEY_CRED_ID
-            echo $CONNECTED_APP_CONSUMER_KEY
+            echo SFDC_HOST
+            echo JWT_KEY_CRED_ID
+            echo CONNECTED_APP_CONSUMER_KEY
+            echo HUB_ORG
            
            
             rc = sh returnStatus: true, script: "${toolbelt}/sfdx force:auth:jwt:grant --clientid ${CONNECTED_APP_CONSUMER_KEY} --username ${HUB_ORG} --jwtkeyfile ${jwt_key_file} --setdefaultdevhubusername --instanceurl ${SFDC_HOST}"
