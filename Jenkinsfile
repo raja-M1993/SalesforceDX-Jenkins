@@ -4,15 +4,11 @@ node {
 
     def SFDC_USERNAME
 
-   /* def HUB_ORG=env.HUB_ORG_DH​
+    def HUB_ORG=env.HUB_ORG_DH​
     def SFDC_HOST =env.SFDC_HOST_DH​
     def JWT_KEY_CRED_ID =env.JWT_CRED_ID_DH
-    def CONNECTED_APP_CONSUMER_KEY=env.CONNECTED_APP_CONSUMER_KEY_DH​*/
-    def envVars = Jenkins.instance.getGlobalNodeProperties()[0].getEnvVars() 
-     def HUB_ORG= envVars['HUB_ORG_DH​']
-    def SFDC_HOST = envVars['SFDC_HOST_DH​']
-    def JWT_KEY_CRED_ID = envVars['JWT_CRED_ID_DH']
-    def CONNECTED_APP_CONSUMER_KEY= envVars['CONNECTED_APP_CONSUMER_KEY_DH​']
+    def CONNECTED_APP_CONSUMER_KEY=env.CONNECTED_APP_CONSUMER_KEY_DH​
+   
     def toolbelt = tool 'toolbelt'
 
     stage('checkout source') {
@@ -23,10 +19,10 @@ node {
     withCredentials([file(credentialsId: JWT_KEY_CRED_ID, variable: 'jwt_key_file')]) {
         stage('Create Scratch Org') {
             echo toolbelt
-            echo SFDC_HOST
-            echo JWT_KEY_CRED_ID
-            echo CONNECTED_APP_CONSUMER_KEY
-            echo HUB_ORG
+            println  SFDC_HOST
+            println  JWT_KEY_CRED_ID
+            println  CONNECTED_APP_CONSUMER_KEY
+            println  HUB_ORG
            
            
             rc = sh returnStatus: true, script: "${toolbelt}/sfdx force:auth:jwt:grant --clientid ${CONNECTED_APP_CONSUMER_KEY} --username ${HUB_ORG} --jwtkeyfile ${jwt_key_file} --setdefaultdevhubusername --instanceurl ${SFDC_HOST}"
