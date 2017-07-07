@@ -13,6 +13,7 @@ node {
             println JWT_KEY_CRED_ID
             println CONNECTED_APP_CONSUMER_KEY
             println HUB_ORG
+			println env.HUB_ORG_DH
    
     def toolbelt = tool 'toolbelt'
 
