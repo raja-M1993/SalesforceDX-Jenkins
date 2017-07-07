@@ -4,7 +4,7 @@ node {
 
     def SFDC_USERNAME
 
-    def HUB_ORG=env.HUB_ORG_DH
+    def HUB_ORG =env.HUB_ORG_DH
     def SFDC_HOST=env.SFDC_HOST_DH
     def JWT_KEY_CRED_ID=env.JWT_CRED_ID_DH
 
