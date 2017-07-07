@@ -8,6 +8,10 @@ node {
     def SFDC_HOST =env.SFDC_HOST_DH​
     def JWT_KEY_CRED_ID =env.JWT_CRED_ID_DH
     def CONNECTED_APP_CONSUMER_KEY=env.CONNECTED_APP_CONSUMER_KEY_DH​
+            println  SFDC_HOST
+            println  JWT_KEY_CRED_ID
+            println  CONNECTED_APP_CONSUMER_KEY
+            println  HUB_ORG
    
     def toolbelt = tool 'toolbelt'
 
