@@ -39,7 +39,7 @@ if(pwd!=repwd)
             usd.add(uds);
             //System.debug(uds);
             insert uds;
-            PageReference retURL = new PageReference('https://c.ap4.visual.force.com/apex/Home');
+            PageReference retURL = new PageReference('/apex/Home');
             retURL.setRedirect(true);
             return retURL;
         }
