@@ -9,13 +9,14 @@ node {
     def JWT_KEY_CRED_ID=env.JWT_CRED_ID_DH
 
     def CONNECTED_APP_CONSUMER_KEY=env.CONNECTED_APP_CONSUMER_KEY_DH
+    def toolbelt = tool 'toolbelt'
             println SFDC_HOST
             println JWT_KEY_CRED_ID
             println CONNECTED_APP_CONSUMER_KEY
             println HUB_ORG
 			println env.HUB_ORG_DH
-   
-    def toolbelt = tool 'toolbelt'
+			println toolbelt
+
 
     stage('checkout source') {
         // when running in multi-branch job, one must issue this command
