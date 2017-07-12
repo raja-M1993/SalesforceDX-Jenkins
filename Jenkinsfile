@@ -3,7 +3,7 @@ import groovy.json.JsonSlurperClassic
 node {
 
     def SFDC_USERNAME
-	def debug_isu= env.SFDX_DEBUG
+	def DEBUG_ISU= env.SFDX_DEBUG
     def HUB_ORG =env.HUB_ORG_DH
     def SFDC_HOST=env.SFDC_HOST_DH
     def JWT_KEY_CRED_ID=env.JWT_CRED_ID_DH
@@ -27,8 +27,8 @@ node {
         stage('Create Scratch Org') {
 
            echo "started"
-		   echo debug_isu;
-            rc = bat returnStatus: true,script: "\"${toolbelt}/bin/sfdx\" force:auth:jwt:grant --clientid ${CONNECTED_APP_CONSUMER_KEY} --username ${HUB_ORG} --jwtkeyfile ${jwt_key_file} --setdefaultdevhubusername"
+		   //echo debug_isu;
+            rc = bat returnStatus: true,script: "\"${toolbelt}/bin/sfdx\" force:auth:jwt:grant --clientid ${CONNECTED_APP_CONSUMER_KEY} --username ${HUB_ORG} --jwtkeyfile ${jwt_key_file} --setdefaultdevhubusername --loglevel DEBUG_ISU"
             if (rc != 0) { error 'hub org authorization failed' }
 
            
