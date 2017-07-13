@@ -32,7 +32,7 @@ node {
             if (rc != 0) { error 'hub org authorization failed' }
 			 rmsg = bat returnStdout: true,script: "\"${toolbelt}/sfdx\" force:org:create --definitionfile config/project-scratch-def.json --json --setdefaultusername"
             printf rmsg
-            /*def jsonSlurper = new JsonSlurperClassic()
+            def jsonSlurper = new JsonSlurperClassic()
             def robj = jsonSlurper.parseText(rmsg)
             if (robj.status != "ok") { error 'org creation failed: ' + robj.message }
             SFDC_USERNAME=robj.username
@@ -43,7 +43,7 @@ node {
             rc = bat returnStatus: true, script: "\"${toolbelt}/sfdx\" force:source:push --targetusername ${SFDC_USERNAME}"
             if (rc != 0) {
                 error 'push failed'
-            }*/
+            }
             
         }
         
