@@ -1,5 +1,5 @@
 #!groovy
-import groovy.json.JsonSlurper
+import groovy.json.JsonSlurperClassic
 node {
 
     def SFDC_USERNAME
@@ -32,7 +32,7 @@ node {
             if (rc != 0) { error 'hub org authorization failed' }
 			 rmsg = bat returnStdout: true,script: "\"${toolbelt}/sfdx\" force:org:create --definitionfile config/project-scratch-def.json --json --setdefaultusername"
             printf rmsg
-            def jsonSlurper = new JsonSlurper()
+            def jsonSlurper = new JsonSlurperClassic()
             def robj = jsonSlurper.parseText(rmsg)
             if (robj.status != "ok") { error 'org creation failed: ' + robj.message }
             SFDC_USERNAME=robj.username
