@@ -34,12 +34,13 @@ node {
             rc = bat returnStatus: true,script: "\"${toolbelt}/sfdx\" force:auth:jwt:grant --clientid ${CONNECTED_APP_CONSUMER_KEY} --username ${HUB_ORG} --jwtkeyfile ${jwt_key_file} --setdefaultdevhubusername"
             if (rc != 0) { error 'hub org authorization failed' }
 			}
-			@NonCPS
+			
 			stage('Create Scratch Org')
 			{
 			  rmsg = bat returnStdout: true, script: "\"${toolbelt}/sfdx\" force:org:create -f config/project-scratch-def.json --json --setdefaultusername"
         printf rmsg
         def jsonSlurper = new JsonSlurperClassic()
+		@NonCPS
         def robj = jsonSlurper.parseText(rmsg.toString())
         if (robj.status != "ok") { error 'org creation failed: ' + robj.message }
         SFDC_USERNAME=robj.username
