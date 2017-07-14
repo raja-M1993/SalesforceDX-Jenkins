@@ -41,7 +41,7 @@ node {
         printf rmsg
         def jsonSlurper = new JsonSlurperClassic()
 		@NonCPS
-        def robj = jsonSlurper.parseText(rmsg.toString())
+        def robj = jsonSlurper.parseText(rmsg)
         if (robj.status != "ok") { error 'org creation failed: ' + robj.message }
         SFDC_USERNAME=robj.username
         robj = null 
