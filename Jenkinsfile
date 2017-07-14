@@ -27,12 +27,16 @@ node {
 @NonCPS
     withCredentials([file(credentialsId: JWT_KEY_CRED_ID, variable: 'jwt_key_file')]) {
 	
-        stage('Create Scratch Org') {
+        stage('Authorize Scratch Org') {
 
            echo "started"
 		   //echo debug_isu;
             rc = bat returnStatus: true,script: "\"${toolbelt}/sfdx\" force:auth:jwt:grant --clientid ${CONNECTED_APP_CONSUMER_KEY} --username ${HUB_ORG} --jwtkeyfile ${jwt_key_file} --setdefaultdevhubusername"
             if (rc != 0) { error 'hub org authorization failed' }
+			}
+			@NonCPS
+			stage('Create Scratch Org')
+			{
 			  rmsg = bat returnStdout: true, script: "\"${toolbelt}/sfdx\" force:org:create -f config/project-scratch-def.json --json --setdefaultusername"
         printf rmsg
         def jsonSlurper = new JsonSlurperClassic()
