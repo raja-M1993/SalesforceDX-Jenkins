@@ -32,6 +32,7 @@ node {
             if (rc != 0) { error 'hub org authorization failed' }
 			  rmsg = bat returnStdout: true, script:"\"${toolbelt}/sfdx\" force:org:create --definitionfile config/project-scratch-def.json --json --setdefaultusername"
             printf rmsg
+			echo rmsg
             def jsonSlurper = new JsonSlurperClassic()
             def robj = jsonSlurper.parseText(rmsg)
             if (robj.status != "ok") { error 'org creation failed: ' + robj.message }
