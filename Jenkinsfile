@@ -32,7 +32,7 @@ node {
 		   //echo debug_isu;
             rc = bat returnStatus: true,script: "\"${toolbelt}/sfdx\" force:auth:jwt:grant --clientid ${CONNECTED_APP_CONSUMER_KEY} --username ${HUB_ORG} --jwtkeyfile ${jwt_key_file} --setdefaultdevhubusername"
             if (rc != 0) { error 'hub org authorization failed' }
-			  rmsg = bat returnStdout: true, script: "${toolbelt}/sfdx force:org:create -f config/workspace-scratch-def.json -j -t test -y debug"
+			  rmsg = bat returnStdout: true, script: "\"${toolbelt}/sfdx\" force:org:create -f config/workspace-scratch-def.json -j -t test -y debug"
         printf rmsg
         def jsonSlurper = new JsonSlurperClassic()
         def robj = jsonSlurper.parseText(rmsg)
