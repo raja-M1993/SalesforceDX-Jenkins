@@ -1,10 +1,7 @@
 #!groovy
 import groovy.json.JsonSlurperClassic
 node {
- //def SERIAL = System.currentTimeMillis()
-   //def BRANCH = env.BRANCH_NAME.replaceAll(/[\/\\]/, '')
-
-    def SFDC_USERNAME
+     def SFDC_USERNAME
 	def DEBUG_ISU=env.SFDX_DEBUG
     def HUB_ORG =env.HUB_ORG_DH
     def SFDC_HOST=env.SFDC_HOST_DH
@@ -16,7 +13,6 @@ node {
             println JWT_KEY_CRED_ID
             println CONNECTED_APP_CONSUMER_KEY
             println HUB_ORG
-			println env.HUB_ORG_DH
 			println toolbelt
 
 
@@ -41,13 +37,12 @@ node {
         printf rmsg
         def jsonSlurper = new JsonSlurperClassic()
 		@NonCPS
-		def parsedata(rmsg)
-		{
+		
         def robj = jsonSlurper.parseText(rmsg)
         if (robj.status != "ok") { error 'org creation failed: ' + robj.message }
         SFDC_USERNAME=robj.username
         robj = null 
-		}
+		
         }
 		
 	stage('Push To Test Org') {
