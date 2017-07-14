@@ -1,6 +1,8 @@
 #!groovy
 import groovy.json.JsonSlurperClassic
 node {
+ def SERIAL = System.currentTimeMillis()
+    def BRANCH = env.BRANCH_NAME.replaceAll(/[\/\\]/, '')
 
     def SFDC_USERNAME
 	def DEBUG_ISU=env.SFDX_DEBUG
