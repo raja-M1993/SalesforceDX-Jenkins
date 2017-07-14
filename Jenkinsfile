@@ -26,6 +26,7 @@ node {
     }
 
     withCredentials([file(credentialsId: JWT_KEY_CRED_ID, variable: 'jwt_key_file')]) {
+	@NonCPS
         stage('Create Scratch Org') {
 
            echo "started"
