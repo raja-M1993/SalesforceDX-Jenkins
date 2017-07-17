@@ -39,6 +39,17 @@ node {
 		   echo rmsp
 		   rmgsplit=rmsg.split('username')
 		println rmgsplit
+		for(String value:rmgsplit)
+		{
+		String myvar[]=value;
+		
+		}
+		echo myvar[0]
+		echo myvar[1]
+		echo myvar[2]
+		echo myvar[3]
+		echo myvar[4]
+		echo myvar[5]
 			/*def robj =new JsonSlurperClassic().parseText(rmsg)
 			echo "status checking"			
             if (robj.status != 0) { error 'org creation failed: ' + robj.message }
