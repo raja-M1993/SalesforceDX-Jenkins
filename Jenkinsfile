@@ -36,6 +36,7 @@ node {
 			 rmsg = bat returnStdout: true, script: "\"${toolbelt}/sfdx\" force:org:create -f config/project-scratch-def.json --json --setdefaultusername"
 	
         printf rmsg
+		echo rmsg;
         //def jsonSlurper = new JsonSlurperClassic()
 		@NonCPS
 		def robj =new groovy.json.JsonSlurperClassic().parseText(rmsg)
