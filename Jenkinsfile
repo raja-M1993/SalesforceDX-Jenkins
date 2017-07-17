@@ -35,7 +35,7 @@ node {
 		echo "initialize json header files"
 		 
 			echo "parse method invokcation"
-            def robj = JsonSlurperClassic().parseText(rmsg)
+            def robj =new JsonSlurperClassic().parseText(rmsg)
 			echo "status checking"			
             if (robj.status != 0) { error 'org creation failed: ' + robj.message }
 			echo "assign values";
