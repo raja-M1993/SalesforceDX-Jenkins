@@ -41,7 +41,8 @@ node {
 		println rmgsplit
 		for(String value:rmgsplit)
 		{
-		def myvar[]=value;
+		def myvar=[]
+		myvar=value
 		
 		}
 		echo myvar[0]
