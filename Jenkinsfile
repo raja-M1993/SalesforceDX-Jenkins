@@ -40,7 +40,15 @@ node {
 		
 		rmgsplit=rmsg.split('username')
 		for (String values:rmgsplit)
-		{	echo values
+		{
+		echo values[0]
+		echo values[0]
+		echo values[1]
+		echo values[2]
+		echo values[3]
+		echo values[4]
+		echo values[5]
+		
 		
 			 }
 			 
