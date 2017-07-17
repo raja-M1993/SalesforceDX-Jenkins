@@ -28,14 +28,14 @@ node {
 		   //echo debug_isu;
             rc = bat returnStatus: true,script: "\"${toolbelt}/sfdx\" force:auth:jwt:grant --clientid ${CONNECTED_APP_CONSUMER_KEY} --username ${HUB_ORG} --jwtkeyfile ${jwt_key_file} --setdefaultdevhubusername"
             if (rc != 0) { error 'hub org authorization failed' }
-			echo "initialize json header files"
+			
+			rmsg = bat returnStdout: true, script: "\"${toolbelt}/sfdx\" force:org:create --definitionfile config/project-scratch-def.json --json --setdefaultusername"
+        echo rmsg
+		printf rmsg
+		echo "initialize json header files"
 		 
 			echo "parse method invokcation"
-			def rmsg = new JsonSlurperClassic().parseText(bat script: "\"${toolbelt}/sfdx\" force:org:create --definitionfile config/project-scratch-def.json --json --setdefaultusername")
-        echo rmsg;
-		printf rmsg
-		
-           // def robj = new JsonSlurperClassic().parseText(rmsg)
+            def robj = JsonSlurperClassic().parseText(rmsg)
 			echo "status checking"			
             if (robj.status != 0) { error 'org creation failed: ' + robj.message }
 			echo "assign values";
