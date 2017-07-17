@@ -35,13 +35,15 @@ node {
 			rmsg = bat returnStdout: true, script: "\"${toolbelt}/sfdx\" force:org:create --definitionfile config/project-scratch-def.json --json --setdefaultusername"
          echo "results in rmg in values--------------------------->"+rmsg
 		echo rmsg.getClass().getName()
-	
-            def robj =new JsonSlurperClassic().parseText(rmsg)
+			def variable1="C:\Users\MSTCHENNAI\jenkins_workspace\workspace\SalesforceDX_master-BZ353QSXAOM4R3QVQCQEDWHC4NF5AHRZZ3P63REGTG7C5SYT4V3A>"C:\Program Files\Heroku\bin/sfdx" force:org:create --definitionfile config/project-scratch-def.json --json --setdefaultusername"
+           rmsp=rmsg-variable1
+		   echo rmsp
+			/*def robj =new JsonSlurperClassic().parseText(rmsg)
 			echo "status checking"			
             if (robj.status != 0) { error 'org creation failed: ' + robj.message }
 			echo "assign values";
             SFDC_USERNAME=robj.username
-            robj = null
+            robj = null*/
 		
         }
 		
