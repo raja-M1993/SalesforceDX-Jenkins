@@ -38,7 +38,7 @@ node {
         printf rmsg
         //def jsonSlurper = new JsonSlurperClassic()
 		@NonCPS
-		def robj =new groovy.json.JsonSlurperClassic.parseText(rmsg)
+		def robj =new groovy.json.JsonSlurperClassic().parseText(rmsg)
        if (robj.status != "ok") { error 'org creation failed: ' + robj.message }
         SFDC_USERNAME=robj.username
         robj = null 
