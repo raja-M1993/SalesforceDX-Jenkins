@@ -7,6 +7,7 @@ node {
     def JWT_KEY_CRED_ID=env.JWT_CRED_ID_DH
 	def rmgsplit
 	def rmsp
+	
 
     def CONNECTED_APP_CONSUMER_KEY=env.CONNECTED_APP_CONSUMER_KEY_DH
     def toolbelt = tool 'toolbelt'
@@ -40,8 +41,8 @@ node {
 		rmgsplit=rmsg.split(':')
 		for (String values:rmgsplit)
 		{
-		println(values)
-		}
+			 rmsp +=values;
+		}println(rmsp);
             //def robj =new JsonSlurperClassic().parseText(rmsg)
 			/*echo "status checking"			
             if (robj.status != 0) { error 'org creation failed: ' + robj.message }
