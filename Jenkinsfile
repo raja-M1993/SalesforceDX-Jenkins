@@ -41,8 +41,10 @@ node {
 		rmgsplit=rmsg.split(':')
 		for (String values:rmgsplit)
 		{
-			 rmsp +=values;
-		}
+		echo values
+			 rmsp +=values
+			 }
+			 
 		println rmsp
             //def robj =new JsonSlurperClassic().parseText(rmsg)
 			/*echo "status checking"			
