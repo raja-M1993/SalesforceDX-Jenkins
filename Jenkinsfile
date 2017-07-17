@@ -33,9 +33,9 @@ node {
         echo rmsg.getClass().getName()
 	
 		echo "parse method invokcation"
-		String str[]
+		def str[]
 		str=rmsg.split(':')
-		for(String val:str)
+		for(def val:str)
 		{
 			println(val)
 		}
