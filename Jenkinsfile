@@ -35,10 +35,10 @@ node {
 		echo "parse method invokcation"
             def robj =new JsonSlurperClassic().parseText(rmsg)
 			echo "status checking"			
-            if (robj.status != 0) { error 'org creation failed: ' + robj.message }
+            if (rmsg.status != 0) { error 'org creation failed: ' + robj.message }
 			echo "assign values";
-            SFDC_USERNAME=robj.username
-            robj = null
+            SFDC_USERNAME=rmsg.username
+            rmsg = null
 		
         }
 		
