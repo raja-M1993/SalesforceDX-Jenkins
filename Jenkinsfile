@@ -6,7 +6,7 @@ node {
     def SFDC_HOST=env.SFDC_HOST_DH
     def JWT_KEY_CRED_ID=env.JWT_CRED_ID_DH
 	def rmgsplit
-	def rmsp
+	def myvar=new String[10]
 	
 
     def CONNECTED_APP_CONSUMER_KEY=env.CONNECTED_APP_CONSUMER_KEY_DH
@@ -41,7 +41,7 @@ node {
 		println rmgsplit
 		for(String value:rmgsplit)
 		{
-		def myvar=new String[10]
+		
 		myvar=value
 		
 		}
