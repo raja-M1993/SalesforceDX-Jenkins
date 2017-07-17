@@ -33,12 +33,18 @@ node {
         echo rmsg.getClass().getName()
 	
 		echo "parse method invokcation"
+		String str[]
+		str=rmsg.split(':')
+		for(String val:str)
+		{
+			println(val)
+		}
             //def robj =new JsonSlurperClassic().parseText(rmsg)
-			echo "status checking"			
-            if (rmsg.status != 0) { error 'org creation failed: ' + robj.message }
+			/*echo "status checking"			
+            if (robj.status != 0) { error 'org creation failed: ' + robj.message }
 			echo "assign values";
-            SFDC_USERNAME=rmsg.username
-            rmsg = null
+            SFDC_USERNAME=robj.username
+            robj = null*/
 		
         }
 		
