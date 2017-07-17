@@ -36,7 +36,7 @@ node {
          echo "results in rmg in values--------------------------->"+rmsg
 		echo rmsg.getClass().getName()
 			
-		   echo rmsp
+		   //echo rmsp
 		   rmgsplit=rmsg.split('username')
 		println rmgsplit
 		for(String value:rmgsplit)
