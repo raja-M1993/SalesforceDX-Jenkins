@@ -1,4 +1,3 @@
-#!groovy
 import groovy.json.JsonSlurperClassic
 node {
      def SFDC_USERNAME
@@ -34,9 +33,9 @@ node {
         echo rmsg;
 		printf rmsg
 		echo "initialize json header files"
-		 def jsonSlurper = new JsonSlurperClassic()
+		 
 			echo "parse method invokcation"
-            def robj = jsonSlurper.parseText(rmsg).username
+            def robj = new groovy.json.JsonSlurperClassic().parseText(rmsg)
 			echo "status checking"			
             if (robj.status != 0) { error 'org creation failed: ' + robj.message }
 			echo "assign values";
