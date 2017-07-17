@@ -31,7 +31,7 @@ node {
 			
 			rmsg = bat returnStdout: true, script: "\"${toolbelt}/sfdx\" force:org:create --definitionfile config/project-scratch-def.json --json --setdefaultusername"
         echo rmsg
-		//printf rmsg
+	
 		echo "parse method invokcation"
             def robj =new JsonSlurperClassic().parseText(rmsg)
 			echo "status checking"			
