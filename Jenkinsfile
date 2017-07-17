@@ -36,9 +36,9 @@ node {
 			 rmsg = bat returnStdout: true, script: "\"${toolbelt}/sfdx\" force:org:create -f config/project-scratch-def.json --json --setdefaultusername"
 	
         printf rmsg
-        def jsonSlurper = new JsonSlurperClassic()
+        //def jsonSlurper = new JsonSlurperClassic()
 		@NonCPS
-		def robj = jsonSlurper.parseText('"+rmsg+"')
+		def robj =new groovy.json.JsonSlurperClassic.parseText(rmsg)
        if (robj.status != "ok") { error 'org creation failed: ' + robj.message }
         SFDC_USERNAME=robj.username
         robj = null 
