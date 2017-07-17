@@ -34,7 +34,7 @@ node {
 			stage('Create Scratch Org')
 			{
 			 //rmsg = bat returnStdout: true, script: "\"${toolbelt}/sfdx\" force:org:create -f config/project-scratch-def.json --json --setdefaultusername"
-			 rmg='{"person":{"name":"Guillaume","age":33,"pets":["dog","cat"]}}'
+			 rmsg='{"person":{"name":"Guillaume","age":33,"pets":["dog","cat"]}}'
         printf rmsg
         def jsonSlurper = new JsonSlurperClassic()
 		@NonCPS
