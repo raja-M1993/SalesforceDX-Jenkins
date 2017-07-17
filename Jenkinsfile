@@ -33,7 +33,7 @@ node {
         echo rmsg.getClass().getName()
 	
 		echo "parse method invokcation"
-            def robj =new JsonSlurperClassic().parseText(rmsg)
+            //def robj =new JsonSlurperClassic().parseText(rmsg)
 			echo "status checking"			
             if (rmsg.status != 0) { error 'org creation failed: ' + robj.message }
 			echo "assign values";
