@@ -5,6 +5,7 @@ node {
     def HUB_ORG =env.HUB_ORG_DH
     def SFDC_HOST=env.SFDC_HOST_DH
     def JWT_KEY_CRED_ID=env.JWT_CRED_ID_DH
+	def rmgsplit
 
     def CONNECTED_APP_CONSUMER_KEY=env.CONNECTED_APP_CONSUMER_KEY_DH
     def toolbelt = tool 'toolbelt'
@@ -33,12 +34,9 @@ node {
         echo rmsg.getClass().getName()
 	
 		echo "parse method invokcation"
-		def str[]
-		str=rmsg.split(':')
-		for(def val:str)
-		{
-			println(val)
-		}
+		
+		rmgsplit=rmsg.split(':')
+		println(rmgsplit)
             //def robj =new JsonSlurperClassic().parseText(rmsg)
 			/*echo "status checking"			
             if (robj.status != 0) { error 'org creation failed: ' + robj.message }
