@@ -34,12 +34,12 @@ node {
 			stage('Create Scratch Org')
 			{
 			 //rmsg = bat returnStdout: true, script: "\"${toolbelt}/sfdx\" force:org:create -f config/project-scratch-def.json --json --setdefaultusername"
-			 rmsg='{"person":{"name":"Guillaume","age":33,"pets":["dog","cat"]}}'
+			 rmsg=[ { "id": "123", "name": "bla bla", "type": "Source", "isLeaf": true } ]
         printf rmsg
         def jsonSlurper = new JsonSlurperClassic()
 		@NonCPS
 		def robj = jsonSlurper.parseText(rmsg)
-        if (robj.status != "ok") { error 'org creation failed: ' + robj.message }
+       if (robj.status != "ok") { error 'org creation failed: ' + robj.message }
         SFDC_USERNAME=robj.name
         robj = null 
 		
