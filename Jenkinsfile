@@ -29,19 +29,15 @@ node {
 		   //echo debug_isu;
             rc = bat returnStatus: true,script: "\"${toolbelt}/sfdx\" force:auth:jwt:grant --clientid ${CONNECTED_APP_CONSUMER_KEY} --username ${HUB_ORG} --jwtkeyfile ${jwt_key_file} --setdefaultdevhubusername"
             if (rc != 0) { error 'hub org authorization failed' }
-			}
 			
-			stage('Create Scratch Org')
-			{
 			 rmsg = bat returnStdout: true, script: "\"${toolbelt}/sfdx\" force:org:create --definitionfile config/project-scratch-def.json --json --setdefaultusername"
         echo rmsg;
 		printf rmsg
-		def jsonSlurper = new JsonSlurperClassic()
-		def robj =jsonSlurper.parseText(rmsg)
-		echo robj;
-       if (robj.status != "ok") { error 'org creation failed: ' + robj.message }
-        SFDC_USERNAME=robj.username
-        robj = null 
+		 def jsonSlurper = new JsonSlurperClassic()
+            def robj = jsonSlurper.parseText(rmsg)
+            if (robj.status != 0) { error 'org creation failed: ' + robj.message }
+            SFDC_USERNAME=robj.username
+            robj = null
 		
         }
 		
