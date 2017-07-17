@@ -1,5 +1,5 @@
 #!groovy
-import groovy.json.JsonSlurperClassic
+import groovy.json.JsonSlurper
 node {
      def SFDC_USERNAME
 	def DEBUG_ISU=env.SFDX_DEBUG
@@ -35,7 +35,7 @@ node {
 			{
 			  rmsg = bat returnStdout: true, script: "\"${toolbelt}/sfdx\" force:org:create -f config/project-scratch-def.json --json --setdefaultusername"
         printf rmsg
-        def jsonSlurper = new JsonSlurperClassic()
+        def jsonSlurper = new JsonSlurper()
 		@NonCPS
 		
         def robj = jsonSlurper.parseText(rmsg)
