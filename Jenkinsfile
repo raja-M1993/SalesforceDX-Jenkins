@@ -38,7 +38,7 @@ node {
 			
 		   //echo rmsp
 		   rmgsplit=rmsg.split('username')
-		println rmgsplit
+		//println rmgsplit
 		for(String value:rmgsplit)
 		{
 		
