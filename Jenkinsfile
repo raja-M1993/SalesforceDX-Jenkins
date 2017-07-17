@@ -31,7 +31,7 @@ node {
 			echo "initialize json header files"
 		 
 			echo "parse method invokcation"
-			def rmsg = new JsonSlurperClassic().parseText(bat returnStdout: true, script: "\"${toolbelt}/sfdx\" force:org:create --definitionfile config/project-scratch-def.json --json --setdefaultusername")
+			def rmsg = new JsonSlurperClassic().parseText(bat script: "\"${toolbelt}/sfdx\" force:org:create --definitionfile config/project-scratch-def.json --json --setdefaultusername")
         echo rmsg;
 		printf rmsg
 		
