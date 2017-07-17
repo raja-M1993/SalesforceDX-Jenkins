@@ -41,7 +41,7 @@ node {
 		println rmgsplit
 		for(String value:rmgsplit)
 		{
-		def myvar=[]
+		def myvar=new String[10]
 		myvar=value
 		
 		}
