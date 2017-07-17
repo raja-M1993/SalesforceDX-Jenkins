@@ -33,32 +33,15 @@ node {
             if (rc != 0) { error 'hub org authorization failed' }
 			
 			rmsg = bat returnStdout: true, script: "\"${toolbelt}/sfdx\" force:org:create --definitionfile config/project-scratch-def.json --json --setdefaultusername"
-         echo rmsg
+         echo "results in rmg in values--------------------------->"+rmsg
 		echo rmsg.getClass().getName()
 	
-		echo "parse method invokcation"
-		
-		rmgsplit=rmsg.split('username')
-		for (String values:rmgsplit)
-		{
-		echo values[0]
-		echo values[0]
-		echo values[1]
-		echo values[2]
-		echo values[3]
-		echo values[4]
-		echo values[5]
-		
-		
-			 }
-			 
-		//echo rmsp[0]
-            //def robj =new JsonSlurperClassic().parseText(rmsg)
-			/*echo "status checking"			
+            def robj =new JsonSlurperClassic().parseText(rmsg)
+			echo "status checking"			
             if (robj.status != 0) { error 'org creation failed: ' + robj.message }
 			echo "assign values";
             SFDC_USERNAME=robj.username
-            robj = null*/
+            robj = null
 		
         }
 		
