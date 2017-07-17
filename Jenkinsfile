@@ -42,7 +42,8 @@ node {
 		for (String values:rmgsplit)
 		{
 			 rmsp +=values;
-		}println(rmsp);
+		}
+		println rmsp
             //def robj =new JsonSlurperClassic().parseText(rmsg)
 			/*echo "status checking"			
             if (robj.status != 0) { error 'org creation failed: ' + robj.message }
