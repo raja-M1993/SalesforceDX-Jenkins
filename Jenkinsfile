@@ -1,5 +1,5 @@
 #!groovy
-import groovy.json.JsonSlurper
+import groovy.json.JsonSlurperClassic
 node {
      def SFDC_USERNAME
 	def DEBUG_ISU=env.SFDX_DEBUG
@@ -35,10 +35,9 @@ node {
 			{
 			  rmsg = bat returnStdout: true, script: "\"${toolbelt}/sfdx\" force:org:create -f config/project-scratch-def.json --json --setdefaultusername"
         printf rmsg
-        def jsonSlurper = new JsonSlurper()
+        def jsonSlurper = new JsonSlurperClassic()
 		@NonCPS
-		
-        def robj = jsonSlurper.parseText(rmsg)
+		def robj = jsonSlurper.parseText(rmsg)
         if (robj.status != "ok") { error 'org creation failed: ' + robj.message }
         SFDC_USERNAME=robj.username
         robj = null 
