@@ -34,17 +34,11 @@ node {
 			rmsg = bat returnStdout: true, script: "\"${toolbelt}/sfdx\" force:org:create --definitionfile config/project-scratch-def.json --json --setdefaultusername"
          echo "results in rmg in values--------------------------->"+rmsg
 		echo rmsg.getClass().getName()
-			def myuser = rmsg.replaceAll('C:\Users\MSTCHENNAI\jenkins_workspace\workspace\SalesforceDX_master-BZ353QSXAOM4R3QVQCQEDWHC4NF5AHRZZ3P63REGTG7C5SYT4V3A>"C:\Program Files\Heroku\bin\\/sfdx" force:org:create --definitionfile config\\/project-scratch-def.json --json --setdefaultusername ',"")
-		  echo myuser
-		  /* rmgsplit=rmsg.split('username')
-		//println rmgsplit
-		for(String value:rmgsplit)
-		{
+		println rmsg.length()
+		println rmsg.substring(100,196)
 		
-			echo value
 		
-		}*/
-		
+			
 			/*def robj =new JsonSlurperClassic().parseText(rmsg)
 			echo "status checking"			
             if (robj.status != 0) { error 'org creation failed: ' + robj.message }
