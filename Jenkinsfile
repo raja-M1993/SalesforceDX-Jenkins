@@ -35,7 +35,7 @@ node {
          echo "results in rmg in values--------------------------->"+rmsg
 		echo rmsg.getClass().getName()
 		println rmsg.length()
-		println rmsg.substring(100,196)
+		println rmsg.substring(251,355)
 		
 		
 			
