@@ -31,7 +31,7 @@ node {
             rc = bat returnStatus: true,script: "\"${toolbelt}/sfdx\" force:auth:jwt:grant --clientid ${CONNECTED_APP_CONSUMER_KEY} --username ${HUB_ORG} --jwtkeyfile ${jwt_key_file} --setdefaultdevhubusername"
             if (rc != 0) { error 'hub org authorization failed' }
 			
-			rmsg = bat returnStdout: true, script: "\"${toolbelt}/sfdx\" force:org:create --definitionfile config\project-scratch-def.json --json --setdefaultusername"
+			rmsg = bat returnStdout: true, script: "\"${toolbelt}/sfdx\" force:org:create --definitionfile config/project-scratch-def.json --json --setdefaultusername"
          echo "results in rmg in values--------------------------->"+rmsg
 		echo rmsg.getClass().getName()
 			
