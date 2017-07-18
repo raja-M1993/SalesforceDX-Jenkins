@@ -43,7 +43,7 @@
     
     <div id="userdetail" align="center">
         <apex:form styleClass="userform">
-            <apex:commandButton value="Logout" styleClass="logut" event="{!Logout}" />
+            <apex:commandButton value="Logout" styleClass="logut" action="{!Logout}" />
             <apex:inlineEditSupport disabled="enableEditing" event="{!myEvent}">
                 <p>Name</p><apex:inputText value="{!recname}" disabled="{!enableEditing}" styleClass="myinputs" /><br /><br />
                 <p>Email</p><apex:inputText value="{!email}" disabled="{!enableEditing}" styleClass="myinputs" /><br /><br />
