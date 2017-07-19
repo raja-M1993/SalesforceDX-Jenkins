@@ -1,3 +1,4 @@
 {
-    "defaultusername": "JenkinsCI"
+    "defaultusername": "source-org",
+    "defaultdevhubusername": "raja.m.s@mstsolutions.com"
 }

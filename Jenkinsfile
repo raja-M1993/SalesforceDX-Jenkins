@@ -40,7 +40,8 @@ node {
 		SFDC_USERNAME=sf_username
 		println SFDC_USERNAME
 		
-		
+		/*password_user= bat returnStout: true script: "\"${toolbelt}/sfdx\" force:user:password:generate --targetusername SFDC_USERNAME"
+		println password_user*/
 			
 			/*def robj =new JsonSlurperClassic().parseText(rmsg)
 			echo "status checking"			
