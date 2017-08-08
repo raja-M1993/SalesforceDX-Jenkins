@@ -2,7 +2,7 @@ import groovy.json.JsonSlurperClassic
 node {
      def SFDC_USERNAME
 	def DEBUG_ISU=env.SFDX_DEBUG
-    def HUB_ORG=env.HUB_ORG_DH​
+    def HUB_ORG=env.HUB_ORG_DHC
     def SFDC_HOST=env.SFDC_HOST_DH
     def JWT_KEY_CRED_ID=env.JWT_CRED_ID_DH
 	def rmgsplit
