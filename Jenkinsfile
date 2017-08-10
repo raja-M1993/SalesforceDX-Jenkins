@@ -43,12 +43,13 @@ node {
 		/*password_user= bat returnStout: true script: "\"${toolbelt}/sfdx\" force:user:password:generate --targetusername SFDC_USERNAME"
 		println password_user*/
 			def rmsg1=rmsg.substring(rmsg.indexOf("{"))
-			println rmsg1
+			 
 			def robj =new JsonSlurperClassic().parseText(rmsg1)
+			print robj
 			echo "status checking"			
             if (robj.status != 0) { error 'org creation failed: ' + robj.message }
 			echo "assign values";
-            SFDC_USERNAME=robj.username
+            SFDC_USERNAME=robj.result.username
 			println SFDC_USERNAME
             robj = null
 		
