@@ -71,7 +71,7 @@ node {
                     error 'apex test run failed'
                 }
             }
-        }
+        
 
         stage('collect results') {
             junit keepLongStdio: true, testResults: 'tests/**/*-junit.xml'
