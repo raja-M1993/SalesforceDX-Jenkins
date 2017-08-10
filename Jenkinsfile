@@ -35,7 +35,7 @@ node {
          echo "results in rmg in values--------------------------->"+rmsg
 		echo rmsg.getClass().getName()
 		println rmsg.length()
-		def sf_username=rmsg.substring(322,356)
+		def sf_username=rmsg.substring(335,371)
 		println sf_username
 		SFDC_USERNAME=sf_username
 		println SFDC_USERNAME
