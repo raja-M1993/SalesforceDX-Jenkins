@@ -65,9 +65,8 @@ node {
             
         }
 		  stage('Run Apex Test') {
-				new File("RUN_ARTIFACT_DIR").mkdir()
-            
-                rc = bat returnStatus: true, sscript: "\"${toolbelt}/sfdx\" force:apex:test:run --testlevel RunLocalTests --outputdir ${RUN_ARTIFACT_DIR} --resultformat tap --targetusername ${SFDC_USERNAME}"
+				bat "md ${RUN_ARTIFACT_DIR}"          
+                rc = bat returnStatus: true,script: "\"${toolbelt}/sfdx\" force:apex:test:run --testlevel RunLocalTests --outputdir ${RUN_ARTIFACT_DIR} --resultformat tap --targetusername ${SFDC_USERNAME}"
                 if (rc != 0) {
                     error 'apex test run failed'
                 }
