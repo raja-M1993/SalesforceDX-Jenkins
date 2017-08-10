@@ -42,7 +42,7 @@ node {
 		
 		/*password_user= bat returnStout: true script: "\"${toolbelt}/sfdx\" force:user:password:generate --targetusername SFDC_USERNAME"
 		println password_user*/
-			def rmsg1=rmsg.substring(rmsg.indexOf("{")+1)
+			def rmsg1=rmsg.substring(rmsg.indexOf("{"))
 			println rmsg1
 			def robj =new JsonSlurperClassic().parseText(rmsg)
 			echo "status checking"			
