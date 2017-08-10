@@ -1,6 +1,6 @@
 import groovy.json.JsonSlurperClassic
 node {
-     def SFDC_USERNAME
+    def SFDC_USERNAME
 	def DEBUG_ISU=env.SFDX_DEBUG
     def HUB_ORG=env.HUB_ORG_DHC
     def SFDC_HOST=env.SFDC_HOST_DH
@@ -65,7 +65,7 @@ node {
             
         }
 		  stage('Run Apex Test') {
-				bat "md ${RUN_ARTIFACT_DIR}"          
+				bat "if not exist md ${RUN_ARTIFACT_DIR}"          
                 rc = bat returnStatus: true,script: "\"${toolbelt}/sfdx\" force:apex:test:run --testlevel RunLocalTests --outputdir ${RUN_ARTIFACT_DIR} --resultformat tap --targetusername ${SFDC_USERNAME}"
                 if (rc != 0) {
                     error 'apex test run failed'
