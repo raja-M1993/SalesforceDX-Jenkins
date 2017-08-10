@@ -74,7 +74,7 @@ node {
         
 
         stage('collect results') {
-            junit keepLongStdio: true, testResults: 'tests/**/*-junit.xml'
+            junit keepLongStdio: true, testResults: 'test/*-junit.xml'
         }
         
     }
