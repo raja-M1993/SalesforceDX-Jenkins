@@ -35,13 +35,15 @@ node {
          echo "results in rmg in values--------------------------->"+rmsg
 		echo rmsg.getClass().getName()
 		println rmsg.length()
-		/*def sf_username=rmsg.substring(335,369)
+		
+		/*---------------------------------------
+		def sf_username=rmsg.substring(335,369)
 		println sf_username
 		SFDC_USERNAME=sf_username
-		println SFDC_USERNAME*/
-		
-		/*password_user= bat returnStout: true script: "\"${toolbelt}/sfdx\" force:user:password:generate --targetusername SFDC_USERNAME"
-		println password_user*/
+		println SFDC_USERNAME
+		password_user= bat returnStout: true script: "\"${toolbelt}/sfdx\" force:user:password:generate --targetusername SFDC_USERNAME"
+		println password_user
+		------------------------------------------------*/
 			def rmsg1=rmsg.substring(rmsg.indexOf("{"))
 			 
 			def robj =new JsonSlurperClassic().parseText(rmsg1)
@@ -63,9 +65,9 @@ node {
             
         }
 		  stage('Run Apex Test') {
-            sh "mkdir -p ${RUN_ARTIFACT_DIR}"
+            bat "mkdir -p ${RUN_ARTIFACT_DIR}"
             timeout(time: 120, unit: 'SECONDS') {
-                rc = sh returnStatus: true, script: "${toolbelt}/sfdx force:apex:test:run --testlevel RunLocalTests --outputdir ${RUN_ARTIFACT_DIR} --resultformat tap --targetusername ${SFDC_USERNAME}"
+                rc = bat returnStatus: true, sscript: "\"${toolbelt}/sfdx\" force:apex:test:run --testlevel RunLocalTests --outputdir ${RUN_ARTIFACT_DIR} --resultformat tap --targetusername ${SFDC_USERNAME}"
                 if (rc != 0) {
                     error 'apex test run failed'
                 }
