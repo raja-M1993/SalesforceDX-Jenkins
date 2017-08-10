@@ -70,7 +70,7 @@ node {
                 if (rc != 0) {
                     error 'apex test run failed'
                 }
-				bat returnStatus: true,script: "\"${toolbelt}/sfdx\" force:apex:test:report -i 7073D000003RZEp --resultformat human
+				bat returnStatus: true,script: "\"${toolbelt}/sfdx\" force:apex:test:report -i 7073D000003RZEp --resultformat human"
             }
         
 
