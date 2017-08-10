@@ -35,20 +35,20 @@ node {
          echo "results in rmg in values--------------------------->"+rmsg
 		echo rmsg.getClass().getName()
 		println rmsg.length()
-		def sf_username=rmsg.substring(335,369)
+		/*def sf_username=rmsg.substring(335,369)
 		println sf_username
 		SFDC_USERNAME=sf_username
-		println SFDC_USERNAME
+		println SFDC_USERNAME*/
 		
 		/*password_user= bat returnStout: true script: "\"${toolbelt}/sfdx\" force:user:password:generate --targetusername SFDC_USERNAME"
 		println password_user*/
 			
-			/*def robj =new JsonSlurperClassic().parseText(rmsg)
+			def robj =new JsonSlurperClassic().parseText(rmsg)
 			echo "status checking"			
             if (robj.status != 0) { error 'org creation failed: ' + robj.message }
 			echo "assign values";
             SFDC_USERNAME=robj.username
-            robj = null*/
+            robj = null
 		
         }
 		
