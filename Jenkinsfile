@@ -65,6 +65,7 @@ node {
             
         }
 		  stage('Run Apex Test') {
+		  bat "del ${RUN_ARTIFACT_DIR}/*"
 				bat "rd ${RUN_ARTIFACT_DIR}"
 				bat "md ${RUN_ARTIFACT_DIR}"          
                 rc = bat returnStatus: true,script: "\"${toolbelt}/sfdx\" force:apex:test:run --testlevel RunLocalTests --outputdir ${RUN_ARTIFACT_DIR} --resultformat tap --targetusername ${SFDC_USERNAME}"
