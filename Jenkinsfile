@@ -49,6 +49,7 @@ node {
             if (robj.status != 0) { error 'org creation failed: ' + robj.message }
 			echo "assign values";
             SFDC_USERNAME=robj.username
+			println SFDC_USERNAME
             robj = null
 		
         }
