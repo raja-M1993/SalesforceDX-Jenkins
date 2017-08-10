@@ -65,6 +65,7 @@ node {
             
         }
 		  stage('Run Apex Test') {
+				bat "if exist rd ${RUN_ARTIFACT_DIR}"
 				bat "if not exist md ${RUN_ARTIFACT_DIR}"          
                 rc = bat returnStatus: true,script: "\"${toolbelt}/sfdx\" force:apex:test:run --testlevel RunLocalTests --outputdir ${RUN_ARTIFACT_DIR} --resultformat tap --targetusername ${SFDC_USERNAME}"
                 if (rc != 0) {
