@@ -82,9 +82,9 @@ node {
         stage ('Covert to MDAPI')
 		{
 		bat "if not exist ${MDAPI_FORMAT} rd /s /q ${MDAPI_FORMAT} "
-		rc = bat returnStatus: true,script: "\"${toolbelt}/sfdx\" force:source:covert -d ${MDAPI_FORMAT}"
+		rc = bat returnStatus: true,script: "\"${toolbelt}/sfdx\" force:source:convert -d ${MDAPI_FORMAT}"
 		bat "git add ${MDAPI_FORMAT}"
-		bat "git commit -m 'post my values' "
+		bat "git commit -m 'changes' "
 		bat "git push origin master"		
 		}
     }
