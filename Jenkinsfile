@@ -67,7 +67,7 @@ node {
 		  stage('Run Apex Test') {
 				
 				
-				bat "if not exist ${RUN_ARTIFACT_DIR} md /s /q ${RUN_ARTIFACT_DIR}"          
+				bat "if exist ${RUN_ARTIFACT_DIR} rd ${RUN_ARTIFACT_DIR} else md ${RUN_ARTIFACT_DIR} "          
                 rc = bat returnStatus: true,script: "\"${toolbelt}/sfdx\" force:apex:test:run --testlevel RunLocalTests --outputdir ${RUN_ARTIFACT_DIR} --resultformat tap --targetusername ${SFDC_USERNAME}"
                 if (rc != 0) {
                     error 'apex test run failed'
@@ -81,7 +81,7 @@ node {
         }
         stage ('Covert to MDAPI')
 		{
-		bat "if not exist ${MDAPI_FORMAT} md /s /q ${MDAPI_FORMAT}"
+		bat "if exist ${MDAPI_FORMAT} rd ${MDAPI_FORMAT} else md ${MDAPI_FORMAT}"
 		rc = bat returnStatus: true,script: "\"${toolbelt}/sfdx\" force:source:convert -d ${MDAPI_FORMAT}"
 		bat "git add ${MDAPI_FORMAT}"
 		bat "git commit -m 'changes' "
