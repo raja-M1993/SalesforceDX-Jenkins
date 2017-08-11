@@ -85,7 +85,7 @@ node {
 		rc = bat returnStatus: true,script: "\"${toolbelt}/sfdx\" force:source:convert -d ${MDAPI_FORMAT}"
 		bat "git add ${MDAPI_FORMAT}"
 		bat "git commit -m 'changes' "
-		bat "git push origin master"		
+		bat "git push origin HEAD:master"		
 		}
     }
 	
