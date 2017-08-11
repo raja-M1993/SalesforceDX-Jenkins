@@ -85,6 +85,7 @@ node {
 		rc = bat returnStatus: true,script: "\"${toolbelt}/sfdx\" force:source:convert -d ${MDAPI_FORMAT}"
 		bat "git add ${MDAPI_FORMAT}"
 		bat "git commit -m 'changes' "
+		bat "git remote add origin https://github.com/raja-M1993/SalesforceDX-Jenkins.git"
 		bat "git push origin master"		
 		}
     }
