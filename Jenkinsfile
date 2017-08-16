@@ -82,7 +82,14 @@ node {
 		}
 		stage('Deployment Against Sandbox')
 		{
-		 rc = bat returnStatus: true, script: "\"${toolbelt}/sfdx\" force:mdapi:deploy -c -d ${MDAPI_FORMAT} -u test-ohyej2retuji@demo_company.net"
+		 rc = bat returnStatus: true, script: "\"${toolbelt}/sfdx\" force:mdapi:deploy -c -d ${MDAPI_FORMAT} -u test-ohyej2retuji@demo_company.net -l RunAllTestsInOrg"
+		 if (rc != 0) {
+                    error 'Deployment Failed'
+                }
+		}
+		stage('Actual Deployment')
+		{
+		 rc = bat returnStatus: true, script: "\"${toolbelt}/sfdx\" force:mdapi:deploy -d ${MDAPI_FORMAT} -u test-ohyej2retuji@demo_company.net -l RunAllTestsInOrg"
 		 if (rc != 0) {
                     error 'Deployment Failed'
                 }
