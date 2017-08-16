@@ -85,17 +85,13 @@ node {
 		}
 		stage('Deployment Against Sandbox')
 		{
-		 rc = bat returnStatus: true, script: "\"${toolbelt}/sfdx\" force:mdapi:deploy -c -d ${MDAPI_FORMAT} -f ${MDAPI_FORMAT}  -u test-dybdjpb9dgww@demo_company.net"
-		 if (rc != 0) {
-                    error 'Deployment Failed'
-                }
+		 rc = bat returnStatus: true, script: "\"${toolbelt}/sfdx\" force:mdapi:deploy -c -d ${MDAPI_FORMAT} -u test-dybdjpb9dgww@demo_company.net -l RunAllTestsInOrg"
+		 
 		}
 		stage('Actual Deployment')
 		{
-		 rc = bat returnStatus: true, script: "\"${toolbelt}/sfdx\" force:mdapi:deploy -d ${MDAPI_FORMAT} -u test-dybdjpb9dgww@demo_company.net"
-		 if (rc != 0) {
-                    error 'Deployment Failed'
-                }
+		 rc = bat returnStatus: true, script: "\"${toolbelt}/sfdx\" force:mdapi:deploy -d ${MDAPI_FORMAT} -u test-dybdjpb9dgww@demo_company.net -l RunAllTestsInOrg"
+		 
 		}
     }
 	
