@@ -36,14 +36,7 @@ node {
 		echo rmsg.getClass().getName()
 		println rmsg.length()
 		
-		/*---------------------------------------
-		def sf_username=rmsg.substring(335,369)
-		println sf_username
-		SFDC_USERNAME=sf_username
-		println SFDC_USERNAME
-		password_user= bat returnStout: true script: "\"${toolbelt}/sfdx\" force:user:password:generate --targetusername SFDC_USERNAME"
-		println password_user
-		------------------------------------------------*/
+		
 			def rmsg1=rmsg.substring(rmsg.indexOf("{"))
 			 
 			def robj =new JsonSlurperClassic().parseText(rmsg1)
@@ -74,12 +67,12 @@ node {
                 }
 				
             }
-        
-		
+        		
         stage('collect results') {
             junit keepLongStdio: true, testResults: 'test/*-junit.xml'
         }
-        stage ('Covert to MDAPI')
+       
+	   stage ('Covert to MDAPI')
 		{
 		bat "if not exist ${MDAPI_FORMAT} md ${MDAPI_FORMAT}"
 		rc = bat returnStatus: true,script: "\"${toolbelt}/sfdx\" force:source:convert -d ${MDAPI_FORMAT}"
@@ -87,7 +80,13 @@ node {
 		bat "git commit -m 'changes' "
 		bat "git push origin HEAD:master"		
 		}
+		stage('Deployment Against Sandbox')
+		{
+		 rc = bat returnStatus: true, script: "\"${toolbelt}/sfdx\" force:mdapi:deploy -c -d ${MDAPI_FORMAT} -u test-ohyej2retuji@demo_company.net"
+		 if (rc != 0) {
+                    error 'Deployment Failed'
+                }
+		}
     }
 	
 }
-	
