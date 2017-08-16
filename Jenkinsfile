@@ -62,7 +62,7 @@ node {
 				
 				bat "if not exist ${RUN_ARTIFACT_DIR} md ${RUN_ARTIFACT_DIR}"   
 				bat "cd ${RUN_ARTIFACT_DIR}"
-				bat "del * /y"
+				//bat "del * /y"
 				rc = bat returnStatus: true,script: "\"${toolbelt}/sfdx\" force:apex:test:run --testlevel RunLocalTests --outputdir ${RUN_ARTIFACT_DIR} --resultformat tap --targetusername ${SFDC_USERNAME}"
                 if (rc != 0) {
                     error 'apex test run failed'
@@ -85,10 +85,10 @@ node {
 		}
 		stage('Deployment Against Sandbox')
 		{
-		 rc = bat returnStatus: true, script: "\"${toolbelt}/sfdx\" force:mdapi:deploy -c -d ${MDAPI_FORMAT} -u test-ohyej2retuji@demo_company.net -l RunAllTestsInOrg"
+		 rc = bat returnStatus: true, script: "\"${toolbelt}/sfdx\" force:mdapi:deploy -c -d ${MDAPI_FORMAT} -u test-ohyej2retuji@demo_company.net - RunAllTestsInOrg"
 		 if (rc != 0) {
                     error 'Deployment Failed'
-                }
+                }l
 		}
 		stage('Actual Deployment')
 		{
