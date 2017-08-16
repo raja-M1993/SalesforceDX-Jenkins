@@ -85,7 +85,7 @@ node {
 		}
 		stage('Deployment Against Sandbox')
 		{
-		 rc = bat returnStatus: true, script: "\"${toolbelt}/sfdx\" force:mdapi:deploy -c -d ${MDAPI_FORMAT} -u test-dybdjpb9dgww@demo_company.net"
+		 rc = bat returnStatus: true, script: "\"${toolbelt}/sfdx\" force:mdapi:deploy -c -d ${MDAPI_FORMAT} -f ${MDAPI_FORMAT}  -u test-dybdjpb9dgww@demo_company.net"
 		 if (rc != 0) {
                     error 'Deployment Failed'
                 }
