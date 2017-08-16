@@ -88,7 +88,7 @@ node {
 		 rc = bat returnStatus: true, script: "\"${toolbelt}/sfdx\" force:mdapi:deploy -c -d ${MDAPI_FORMAT} -u test-ohyej2retuji@demo_company.net - RunAllTestsInOrg"
 		 if (rc != 0) {
                     error 'Deployment Failed'
-                }l
+                }
 		}
 		stage('Actual Deployment')
 		{
