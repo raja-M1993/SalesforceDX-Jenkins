@@ -31,7 +31,7 @@ node {
             rc = bat returnStatus: true,script: "\"${toolbelt}/sfdx\" force:auth:jwt:grant --clientid ${CONNECTED_APP_CONSUMER_KEY} --username ${HUB_ORG} --jwtkeyfile ${jwt_key_file} --setdefaultdevhubusername"
             if (rc != 0) { error 'hub org authorization failed' }
 			
-			/*rmsg = bat returnStdout: true, script: "\"${toolbelt}/sfdx\" force:org:create --definitionfile config/project-scratch-def.json --json --setdefaultusername"
+			rmsg = bat returnStdout: true, script: "\"${toolbelt}/sfdx\" force:org:create --definitionfile config/project-scratch-def.json --json --setdefaultusername"
          echo "results in rmg in values--------------------------->"+rmsg
 		echo rmsg.getClass().getName()
 		println rmsg.length()
@@ -49,28 +49,28 @@ node {
             robj = null */
 		
         }
-	/*	
+	
 	stage('Push To Test Org') {
             rc = bat returnStatus: true, script: "\"${toolbelt}/sfdx\" force:source:push --targetusername ${SFDC_USERNAME}"
             if (rc != 0) {
                 error 'push failed'
             }
             
-        }*/
+        }
 		  stage('Run Apex Test') {
 				
-				bat "rd ${RUN_ARTIFACT_DIR}|echo y|del ${RUN_ARTIFACT_DIR}/*.xml,.json,.txt"
+				//bat "rd ${RUN_ARTIFACT_DIR}|echo y|del ${RUN_ARTIFACT_DIR}/*.xml,.json,.txt"
 				bat "if not exist ${RUN_ARTIFACT_DIR} md ${RUN_ARTIFACT_DIR}"   
 				
 				
-				/*rc = bat returnStatus: true,script: "\"${toolbelt}/sfdx\" force:apex:test:run --testlevel RunLocalTests --outputdir ${RUN_ARTIFACT_DIR} --resultformat tap --targetusername ${SFDC_USERNAME}"
+				rc = bat returnStatus: true,script: "\"${toolbelt}/sfdx\" force:apex:test:run --testlevel RunLocalTests --outputdir ${RUN_ARTIFACT_DIR} --resultformat tap --targetusername ${SFDC_USERNAME}"
                 if (rc != 0) {
                     error 'apex test run failed'
-                }*/
+                }
 				
             }
-        		
-       /* stage('collect results') {
+      		
+        stage('collect results') {
 				junit keepLongStdio: true, testResults: 'test/*-junit.xml'
 				bat "zip -r C:/Nexus/sonatype-work/nexus/storage/SalesforceDx_Test_Results/test.zip ${RUN_ARTIFACT_DIR}"
         }
@@ -92,7 +92,7 @@ node {
 		{
 		 rc = bat returnStatus: true, script: "\"${toolbelt}/sfdx\" force:mdapi:deploy -d ${MDAPI_FORMAT} -u test-cfgk1svera0g@demo_company.net -l RunAllTestsInOrg"
 		 
-		}*/
+		}
     }
 	
 }
