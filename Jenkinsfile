@@ -72,7 +72,7 @@ node {
       		
         stage('collect results') {
 				junit keepLongStdio: true, testResults: 'test/*-junit.xml'
-				bat "zip -r C:/Nexus/sonatype-work/nexus/storage/SalesforceDx_Test_Results/test.zip ${RUN_ARTIFACT_DIR}"
+				bat "zip -r D:/Nexus/sonatype-work/nexus/storage/SalesforceDx_Test_Results/test.zip ${RUN_ARTIFACT_DIR}"
         }
        
 	   stage ('Covert to MDAPI')
@@ -85,14 +85,14 @@ node {
 		}
 		stage('Deployment Against Sandbox')
 		{
-		 rc = bat returnStatus: true, script: "\"${toolbelt}/sfdx\" force:mdapi:deploy -c -d ${MDAPI_FORMAT} -u test-cfgk1svera0g@demo_company.net -l RunAllTestsInOrg"
+		 rc = bat returnStatus: true, script: "\"${toolbelt}/sfdx\" force:mdapi:deploy -c -d ${MDAPI_FORMAT} -u devopsmst@gmail.com -l RunAllTestsInOrg"
 		 
 		}
-		stage('Actual Deployment')
+		/*stage('Actual Deployment')
 		{
 		 rc = bat returnStatus: true, script: "\"${toolbelt}/sfdx\" force:mdapi:deploy -d ${MDAPI_FORMAT} -u test-cfgk1svera0g@demo_company.net -l RunAllTestsInOrg"
 		 
-		}
+		}*/
     }
 	
 }
