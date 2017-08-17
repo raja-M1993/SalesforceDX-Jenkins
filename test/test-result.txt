@@ -1,0 +1,12 @@
+1..10
+ok 1 UserDetailsTest.myUnitTest
+ok 2 UserTestDashboard.checkBoard
+ok 3 HomeTest.checkRedirect
+ok 4 TestRaja_Test.checkAdminMethod
+ok 5 TestRaja_Test.checkCredentialMethod
+ok 6 TestFetchData.hideusers
+ok 7 TestFetchData.logoutUsers
+ok 8 TestFetchData.testFetch
+ok 9 TestFetchData.updateUsers
+ok 10 TestLogin.saveDataTest
+# Run "sfdx force:apex:test:report -i 7073D000003zfs3 --resultformat <format>" to retrieve test results in a different format.

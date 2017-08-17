@@ -1,0 +1,262 @@
+{
+    "summary": {
+        "outcome": "Passed",
+        "testsRan": 10,
+        "passing": 10,
+        "failing": 0,
+        "skipped": 0,
+        "passRate": "100%",
+        "failRate": "0%",
+        "testStartTime": "Aug 16, 2017 11:51 AM",
+        "testExecutionTime": "475 ms",
+        "testTotalTime": "475 ms",
+        "commandTime": "11294 ms",
+        "hostname": "https://ruby-momentum-5549-dev-ed.cs11.my.salesforce.com",
+        "orgId": "00DZ000000NDpy9MAD",
+        "username": "test-qpat52p6ecmg@demo_company.net",
+        "userId": "005Z0000003j9dzIAA",
+        "testRunId": "707Z000000kOphD"
+    },
+    "tests": [
+        {
+            "attributes": {
+                "type": "ApexTestResult",
+                "url": "/services/data/v40.0/tooling/sobjects/ApexTestResult/07MZ0000004C140MAC"
+            },
+            "Id": "07MZ0000004C140MAC",
+            "QueueItemId": "709Z0000000ne26IAA",
+            "StackTrace": null,
+            "Message": null,
+            "AsyncApexJobId": "707Z000000kOphDIAS",
+            "MethodName": "checkRedirect",
+            "Outcome": "Pass",
+            "ApexClass": {
+                "attributes": {
+                    "type": "ApexClass",
+                    "url": "/services/data/v40.0/tooling/sobjects/ApexClass/01pZ0000000TbxQIAS"
+                },
+                "Id": "01pZ0000000TbxQIAS",
+                "Name": "HomeTest",
+                "NamespacePrefix": null
+            },
+            "RunTime": 16,
+            "FullName": "HomeTest..checkRedirect"
+        },
+        {
+            "attributes": {
+                "type": "ApexTestResult",
+                "url": "/services/data/v40.0/tooling/sobjects/ApexTestResult/07MZ0000004C141MAC"
+            },
+            "Id": "07MZ0000004C141MAC",
+            "QueueItemId": "709Z0000000ne24IAA",
+            "StackTrace": null,
+            "Message": null,
+            "AsyncApexJobId": "707Z000000kOphDIAS",
+            "MethodName": "hideusers",
+            "Outcome": "Pass",
+            "ApexClass": {
+                "attributes": {
+                    "type": "ApexClass",
+                    "url": "/services/data/v40.0/tooling/sobjects/ApexClass/01pZ0000000TbxTIAS"
+                },
+                "Id": "01pZ0000000TbxTIAS",
+                "Name": "TestFetchData",
+                "NamespacePrefix": null
+            },
+            "RunTime": 10,
+            "FullName": "TestFetchData..hideusers"
+        },
+        {
+            "attributes": {
+                "type": "ApexTestResult",
+                "url": "/services/data/v40.0/tooling/sobjects/ApexTestResult/07MZ0000004C142MAC"
+            },
+            "Id": "07MZ0000004C142MAC",
+            "QueueItemId": "709Z0000000ne24IAA",
+            "StackTrace": null,
+            "Message": null,
+            "AsyncApexJobId": "707Z000000kOphDIAS",
+            "MethodName": "logoutUsers",
+            "Outcome": "Pass",
+            "ApexClass": {
+                "attributes": {
+                    "type": "ApexClass",
+                    "url": "/services/data/v40.0/tooling/sobjects/ApexClass/01pZ0000000TbxTIAS"
+                },
+                "Id": "01pZ0000000TbxTIAS",
+                "Name": "TestFetchData",
+                "NamespacePrefix": null
+            },
+            "RunTime": 5,
+            "FullName": "TestFetchData..logoutUsers"
+        },
+        {
+            "attributes": {
+                "type": "ApexTestResult",
+                "url": "/services/data/v40.0/tooling/sobjects/ApexTestResult/07MZ0000004C143MAC"
+            },
+            "Id": "07MZ0000004C143MAC",
+            "QueueItemId": "709Z0000000ne24IAA",
+            "StackTrace": null,
+            "Message": null,
+            "AsyncApexJobId": "707Z000000kOphDIAS",
+            "MethodName": "testFetch",
+            "Outcome": "Pass",
+            "ApexClass": {
+                "attributes": {
+                    "type": "ApexClass",
+                    "url": "/services/data/v40.0/tooling/sobjects/ApexClass/01pZ0000000TbxTIAS"
+                },
+                "Id": "01pZ0000000TbxTIAS",
+                "Name": "TestFetchData",
+                "NamespacePrefix": null
+            },
+            "RunTime": 39,
+            "FullName": "TestFetchData..testFetch"
+        },
+        {
+            "attributes": {
+                "type": "ApexTestResult",
+                "url": "/services/data/v40.0/tooling/sobjects/ApexTestResult/07MZ0000004C144MAC"
+            },
+            "Id": "07MZ0000004C144MAC",
+            "QueueItemId": "709Z0000000ne24IAA",
+            "StackTrace": null,
+            "Message": null,
+            "AsyncApexJobId": "707Z000000kOphDIAS",
+            "MethodName": "updateUsers",
+            "Outcome": "Pass",
+            "ApexClass": {
+                "attributes": {
+                    "type": "ApexClass",
+                    "url": "/services/data/v40.0/tooling/sobjects/ApexClass/01pZ0000000TbxTIAS"
+                },
+                "Id": "01pZ0000000TbxTIAS",
+                "Name": "TestFetchData",
+                "NamespacePrefix": null
+            },
+            "RunTime": 113,
+            "FullName": "TestFetchData..updateUsers"
+        },
+        {
+            "attributes": {
+                "type": "ApexTestResult",
+                "url": "/services/data/v40.0/tooling/sobjects/ApexTestResult/07MZ0000004C145MAC"
+            },
+            "Id": "07MZ0000004C145MAC",
+            "QueueItemId": "709Z0000000ne22IAA",
+            "StackTrace": null,
+            "Message": null,
+            "AsyncApexJobId": "707Z000000kOphDIAS",
+            "MethodName": "saveDataTest",
+            "Outcome": "Pass",
+            "ApexClass": {
+                "attributes": {
+                    "type": "ApexClass",
+                    "url": "/services/data/v40.0/tooling/sobjects/ApexClass/01pZ0000000TbxUIAS"
+                },
+                "Id": "01pZ0000000TbxUIAS",
+                "Name": "TestLogin",
+                "NamespacePrefix": null
+            },
+            "RunTime": 50,
+            "FullName": "TestLogin..saveDataTest"
+        },
+        {
+            "attributes": {
+                "type": "ApexTestResult",
+                "url": "/services/data/v40.0/tooling/sobjects/ApexTestResult/07MZ0000004C14BMAS"
+            },
+            "Id": "07MZ0000004C14BMAS",
+            "QueueItemId": "709Z0000000ne23IAA",
+            "StackTrace": null,
+            "Message": null,
+            "AsyncApexJobId": "707Z000000kOphDIAS",
+            "MethodName": "checkAdminMethod",
+            "Outcome": "Pass",
+            "ApexClass": {
+                "attributes": {
+                    "type": "ApexClass",
+                    "url": "/services/data/v40.0/tooling/sobjects/ApexClass/01pZ0000000TbxVIAS"
+                },
+                "Id": "01pZ0000000TbxVIAS",
+                "Name": "TestRaja_Test",
+                "NamespacePrefix": null
+            },
+            "RunTime": 45,
+            "FullName": "TestRaja_Test..checkAdminMethod"
+        },
+        {
+            "attributes": {
+                "type": "ApexTestResult",
+                "url": "/services/data/v40.0/tooling/sobjects/ApexTestResult/07MZ0000004C14CMAS"
+            },
+            "Id": "07MZ0000004C14CMAS",
+            "QueueItemId": "709Z0000000ne23IAA",
+            "StackTrace": null,
+            "Message": null,
+            "AsyncApexJobId": "707Z000000kOphDIAS",
+            "MethodName": "checkCredentialMethod",
+            "Outcome": "Pass",
+            "ApexClass": {
+                "attributes": {
+                    "type": "ApexClass",
+                    "url": "/services/data/v40.0/tooling/sobjects/ApexClass/01pZ0000000TbxVIAS"
+                },
+                "Id": "01pZ0000000TbxVIAS",
+                "Name": "TestRaja_Test",
+                "NamespacePrefix": null
+            },
+            "RunTime": 18,
+            "FullName": "TestRaja_Test..checkCredentialMethod"
+        },
+        {
+            "attributes": {
+                "type": "ApexTestResult",
+                "url": "/services/data/v40.0/tooling/sobjects/ApexTestResult/07MZ0000004C14DMAS"
+            },
+            "Id": "07MZ0000004C14DMAS",
+            "QueueItemId": "709Z0000000ne21IAA",
+            "StackTrace": null,
+            "Message": null,
+            "AsyncApexJobId": "707Z000000kOphDIAS",
+            "MethodName": "myUnitTest",
+            "Outcome": "Pass",
+            "ApexClass": {
+                "attributes": {
+                    "type": "ApexClass",
+                    "url": "/services/data/v40.0/tooling/sobjects/ApexClass/01pZ0000000TbxXIAS"
+                },
+                "Id": "01pZ0000000TbxXIAS",
+                "Name": "UserDetailsTest",
+                "NamespacePrefix": null
+            },
+            "RunTime": 100,
+            "FullName": "UserDetailsTest..myUnitTest"
+        },
+        {
+            "attributes": {
+                "type": "ApexTestResult",
+                "url": "/services/data/v40.0/tooling/sobjects/ApexTestResult/07MZ0000004C14AMAS"
+            },
+            "Id": "07MZ0000004C14AMAS",
+            "QueueItemId": "709Z0000000ne25IAA",
+            "StackTrace": null,
+            "Message": null,
+            "AsyncApexJobId": "707Z000000kOphDIAS",
+            "MethodName": "checkBoard",
+            "Outcome": "Pass",
+            "ApexClass": {
+                "attributes": {
+                    "type": "ApexClass",
+                    "url": "/services/data/v40.0/tooling/sobjects/ApexClass/01pZ0000000TbxYIAS"
+                },
+                "Id": "01pZ0000000TbxYIAS",
+                "Name": "UserTestDashboard",
+                "NamespacePrefix": null
+            },
+            "RunTime": 79,
+            "FullName": "UserTestDashboard..checkBoard"
+        }
+    ]
+}

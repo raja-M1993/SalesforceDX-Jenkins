@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+    <testsuite name="force.apex" timestamp="2017-08-16T11:51:58+05:30" hostname="https://ruby-momentum-5549-dev-ed.cs11.my.salesforce.com" tests="10" failures="0"  errors="0"  time="0.48">
+        <properties>
+            <property name="outcome" value="Passed"/>
+            <property name="testsRan" value="10"/>
+            <property name="passing" value="10"/>
+            <property name="failing" value="0"/>
+            <property name="skipped" value="0"/>
+            <property name="passRate" value="100%"/>
+            <property name="failRate" value="0%"/>
+            <property name="testStartTime" value="Aug 16, 2017 11:51 AM"/>
+            <property name="testExecutionTime" value="0.48 s"/>
+            <property name="testTotalTime" value="0.48 s"/>
+            <property name="commandTime" value="11.29 s"/>
+            <property name="hostname" value="https://ruby-momentum-5549-dev-ed.cs11.my.salesforce.com"/>
+            <property name="orgId" value="00DZ000000NDpy9MAD"/>
+            <property name="username" value="test-qpat52p6ecmg@demo_company.net"/>
+            <property name="userId" value="005Z0000003j9dzIAA"/>
+            <property name="testRunId" value="707Z000000kOphD"/>
+        </properties>
+        <testcase name="checkRedirect" classname="HomeTest" time="0.02">
+        </testcase>
+        <testcase name="hideusers" classname="TestFetchData" time="0.01">
+        </testcase>
+        <testcase name="logoutUsers" classname="TestFetchData" time="0.01">
+        </testcase>
+        <testcase name="testFetch" classname="TestFetchData" time="0.04">
+        </testcase>
+        <testcase name="updateUsers" classname="TestFetchData" time="0.11">
+        </testcase>
+        <testcase name="saveDataTest" classname="TestLogin" time="0.05">
+        </testcase>
+        <testcase name="checkAdminMethod" classname="TestRaja_Test" time="0.05">
+        </testcase>
+        <testcase name="checkCredentialMethod" classname="TestRaja_Test" time="0.02">
+        </testcase>
+        <testcase name="myUnitTest" classname="UserDetailsTest" time="0.1">
+        </testcase>
+        <testcase name="checkBoard" classname="UserTestDashboard" time="0.08">
+        </testcase>
+    </testsuite>
+</testsuites>
