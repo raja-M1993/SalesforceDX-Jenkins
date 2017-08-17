@@ -62,7 +62,7 @@ node {
 				
 				bat "if not exist ${RUN_ARTIFACT_DIR} md ${RUN_ARTIFACT_DIR}"   
 				
-				bat "cd ${RUN_ARTIFACT_DIR}| echo y| del * "
+				
 				rc = bat returnStatus: true,script: "\"${toolbelt}/sfdx\" force:apex:test:run --testlevel RunLocalTests --outputdir ${RUN_ARTIFACT_DIR} --resultformat tap --targetusername ${SFDC_USERNAME}"
                 if (rc != 0) {
                     error 'apex test run failed'
@@ -72,6 +72,7 @@ node {
         		
         stage('collect results') {
             junit keepLongStdio: true, testResults: 'test/*-junit.xml'
+			bat "cd ${RUN_ARTIFACT_DIR}| echo y| del * "
 			bat "zip -r C:/Nexus/sonatype-work/nexus/storage/SalesforceDx_Test_Results/test.zip ${RUN_ARTIFACT_DIR}"
         }
        
