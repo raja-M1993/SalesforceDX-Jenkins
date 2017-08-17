@@ -59,7 +59,7 @@ node {
         }*/
 		  stage('Run Apex Test') {
 				
-				bat "rd ${RUN_ARTIFACT_DIR}|echo y|del ${RUN_ARTIFACT_DIR}/*-junit.xml"
+				bat "rd ${RUN_ARTIFACT_DIR}|echo y|del ${RUN_ARTIFACT_DIR}/*.xml,.json,.txt"
 				bat "if not exist ${RUN_ARTIFACT_DIR} md ${RUN_ARTIFACT_DIR}"   
 				
 				
