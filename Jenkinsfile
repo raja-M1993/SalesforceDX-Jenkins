@@ -31,7 +31,7 @@ node {
             rc = bat returnStatus: true,script: "\"${toolbelt}/sfdx\" force:auth:jwt:grant --clientid ${CONNECTED_APP_CONSUMER_KEY} --username ${HUB_ORG} --jwtkeyfile ${jwt_key_file} --setdefaultdevhubusername"
             if (rc != 0) { error 'hub org authorization failed' }
 			
-		/*	rmsg = bat returnStdout: true, script: "\"${toolbelt}/sfdx\" force:org:create --definitionfile config/project-scratch-def.json --json --setdefaultusername"
+			rmsg = bat returnStdout: true, script: "\"${toolbelt}/sfdx\" force:org:create --definitionfile config/project-scratch-def.json --json --setdefaultusername"
          echo "results in rmg in values--------------------------->"+rmsg
 		echo rmsg.getClass().getName()
 		println rmsg.length()
@@ -50,7 +50,7 @@ node {
 		
         }
 		
-/*	stage('Push To Test Org') {
+	stage('Push To Test Org') {
             rc = bat returnStatus: true, script: "\"${toolbelt}/sfdx\" force:source:push --targetusername ${SFDC_USERNAME}"
             if (rc != 0) {
                 error 'push failed'
@@ -59,7 +59,7 @@ node {
         }
 		  stage('Run Apex Test') {
 				
-				
+				bat "rd ${RUN_ARTIFACT_DIR}|echo y"
 				bat "if not exist ${RUN_ARTIFACT_DIR} md ${RUN_ARTIFACT_DIR}"   
 				
 				
@@ -68,16 +68,14 @@ node {
                     error 'apex test run failed'
                 }
 				
-            }*/
+            }
         		
         stage('collect results') {
-            //junit keepLongStdio: true, testResults: 'test/*-junit.xml'
-			bat "rd ${RUN_ARTIFACT_DIR}|echo y"
-			bat "if not exist ${RUN_ARTIFACT_DIR} md ${RUN_ARTIFACT_DIR}"   
-			//bat "zip -r C:/Nexus/sonatype-work/nexus/storage/SalesforceDx_Test_Results/test.zip ${RUN_ARTIFACT_DIR}"
+				junit keepLongStdio: true, testResults: 'test/*-junit.xml'
+				bat "zip -r C:/Nexus/sonatype-work/nexus/storage/SalesforceDx_Test_Results/test.zip ${RUN_ARTIFACT_DIR}"
         }
        
-	   /*stage ('Covert to MDAPI')
+	   stage ('Covert to MDAPI')
 		{
 		bat "if not exist ${MDAPI_FORMAT} md ${MDAPI_FORMAT}"
 		rc = bat returnStatus: true,script: "\"${toolbelt}/sfdx\" force:source:convert -d ${MDAPI_FORMAT}"
@@ -94,7 +92,7 @@ node {
 		{
 		 rc = bat returnStatus: true, script: "\"${toolbelt}/sfdx\" force:mdapi:deploy -d ${MDAPI_FORMAT} -u test-cfgk1svera0g@demo_company.net -l RunAllTestsInOrg"
 		 
-		}*/
+		}
     }
 	
 }
