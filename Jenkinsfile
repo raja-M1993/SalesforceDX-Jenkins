@@ -59,7 +59,8 @@ node {
         }*/
 		  stage('Run Apex Test') {
 				
-				bat "rd ${RUN_ARTIFACT_DIR}|echo y"
+				bat "rd ${RUN_ARTIFACT_DIR}"
+				bat "del echo y| ${RUN_ARTIFACT_DIR}/* "
 				bat "if not exist ${RUN_ARTIFACT_DIR} md ${RUN_ARTIFACT_DIR}"   
 				
 				
