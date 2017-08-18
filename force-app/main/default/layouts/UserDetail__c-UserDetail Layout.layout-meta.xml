@@ -23,6 +23,10 @@
                 <behavior>Edit</behavior>
                 <field>Passwordd__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Message__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
