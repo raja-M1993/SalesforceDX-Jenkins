@@ -88,11 +88,11 @@ node {
 		 rc = bat returnStatus: true, script: "\"${toolbelt}/sfdx\" force:mdapi:deploy -c -d ${MDAPI_FORMAT} -u devopsmst@gmail.com -l RunAllTestsInOrg"
 		 
 		}
-		/*stage('Actual Deployment')
+		stage('Actual Deployment')
 		{
 		 rc = bat returnStatus: true, script: "\"${toolbelt}/sfdx\" force:mdapi:deploy -d ${MDAPI_FORMAT} -u test-cfgk1svera0g@demo_company.net -l RunAllTestsInOrg"
 		 
-		}*/
+		}
     }
 	
 }
