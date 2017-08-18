@@ -15,7 +15,7 @@
             <name>welcome_message</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>UserDetail__c.username__c</field>
             <operation>notEqual</operation>
