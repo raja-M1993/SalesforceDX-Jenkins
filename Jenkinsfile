@@ -72,7 +72,7 @@ node {
       		
         stage('collect results') {
 				junit keepLongStdio: true, testResults: 'test/*-junit.xml'
-				bat "zip -r D:/Nexus/sonatype-work/nexus/storage/SalesforceDx_Test_Results/test.zip ${RUN_ARTIFACT_DIR}"
+				bat "zip -r C:/Nexus/sonatype-work/nexus/storage/SalesforceDx_Test_Results/test.zip ${RUN_ARTIFACT_DIR}"
         }
 		stage('Delete Scratch Org')
 		{
@@ -107,7 +107,7 @@ node {
 stage ('Send Notifications')
 node {
     try {
-        sh 'exit 1'
+        bat 'exit 1'
         currentBuild.result = 'SUCCESS'
     } catch (any) {
         currentBuild.result = 'FAILURE'
