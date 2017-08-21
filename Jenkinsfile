@@ -74,6 +74,13 @@ node {
 				junit keepLongStdio: true, testResults: 'test/*-junit.xml'
 				bat "zip -r D:/Nexus/sonatype-work/nexus/storage/SalesforceDx_Test_Results/test.zip ${RUN_ARTIFACT_DIR}"
         }
+		stage('Delete Scratch Org')
+		{
+		rc = bat returnStatus: true,script: "\"${toolbelt}/sfdx\" force:org:delete --targetusername ${SFDC_USERNAME}"
+                if (rc != 0) {
+                    error 'apex test run failed'
+                }
+		}
        
 	   stage ('Covert to MDAPI')
 		{
