@@ -76,7 +76,7 @@ node {
         }
 		stage('Delete Scratch Org')
 		{
-		rc = bat returnStatus: true,script: "\"${toolbelt}/sfdx\" force:org:delete --targetusername ${SFDC_USERNAME}"
+		rc = bat returnStatus: true,script: "\"${toolbelt}/sfdx\" force:org:delete --targetusername ${SFDC_USERNAME} --noprompt"
                 if (rc != 0) {
                     error 'apex test run failed'
                 }
