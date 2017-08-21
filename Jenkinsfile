@@ -100,8 +100,12 @@ node {
 		// rc = bat returnStatus: true, script: "\"${toolbelt}/sfdx\" force:mdapi:deploy -d ${MDAPI_FORMAT} -u test-cfgk1svera0g@demo_company.net -l RunAllTestsInOrg"
 		 
 		}
-		stage ('Send Notifications')
- {
+		
+    }
+	
+}
+stage ('Send Notifications')
+node {
     try {
         sh 'exit 1'
         currentBuild.result = 'SUCCESS'
@@ -111,7 +115,4 @@ node {
     } finally {
         step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: 'raja.m@mstsolutions.com', sendToIndividuals: true])
     }
-}
-    }
-	
 }
