@@ -23,13 +23,13 @@ pipeline {
 		{
        checkout scm 
 	  script
-	   {
-	   echo toolbelt
+	   /* {
+	  echo toolbelt
 		echo HUB_ORG
 		echo SFDC_HOST
 		echo JWT_KEY_CRED_ID
 		echo CONNECTED_APP_CONSUMER_KEY
-	   }
+	   }/*
 	      }
 	}
 	stage('Authorize Scratch Org') {
@@ -44,7 +44,7 @@ pipeline {
           rc = sh returnStatus: true,script: "${toolbelt}/sfdx force:auth:jwt:grant --clientid ${CONNECTED_APP_CONSUMER_KEY} --username ${HUB_ORG} --jwtkeyfile ${jwt_key_file} --setdefaultdevhubusername"
            if (rc != 0) { error 'hub org authorization failed' }
 			
-rmsg = sh returnStdout: true, script: "${toolbelt}/sfdx force:org:create --definitionfile config/project-scratch-def.json --json --setdefaultusername"
+/* rmsg = sh returnStdout: true, script: "${toolbelt}/sfdx force:org:create --definitionfile config/project-scratch-def.json --json --setdefaultusername"
          echo "results in rmg in values--------------------------->"+rmsg
 		echo rmsg.getClass().getName()
 		println rmsg.length()
@@ -59,7 +59,7 @@ rmsg = sh returnStdout: true, script: "${toolbelt}/sfdx force:org:create --defin
 			echo "assign values";
             SFDC_USERNAME=robj.result.username
 			println SFDC_USERNAME
-            robj = null
+            robj = null*/
 		
         }
 		}
@@ -67,7 +67,7 @@ rmsg = sh returnStdout: true, script: "${toolbelt}/sfdx force:org:create --defin
 		} 
 		
 	
-	stage('Push To Test Org'){
+	/* stage('Push To Test Org'){
 	steps{
 	withCredentials([file(credentialsId: JWT_KEY_CRED_ID, variable: 'jwt_key_file')]) {
 	script{
@@ -137,7 +137,7 @@ rmsg = sh returnStdout: true, script: "${toolbelt}/sfdx force:org:create --defin
 		}
 		}
 		}
-		}
+		}*/
       
 	  /* stage ('Covert to MDAPI')
 		{
@@ -174,21 +174,6 @@ rmsg = sh returnStdout: true, script: "${toolbelt}/sfdx force:org:create --defin
 		
     }
 	
-/*post{
-	
-        success {
-             mail (to:"${emailRecipients}",
 
-         subject: "Build Success '${env.JOB_NAME}' (${env.BUILD_NUMBER}) ",
-         body: "Build Success ${env.BUILD_URL}.");
-        }
-		
-        failure {
-           mail (to:'raja.m@mstsolutions.com',
-			
-         subject: "Build Failure '${env.JOB_NAME}' (${env.BUILD_NUMBER})",
-         body: "Build Failure ${env.BUILD_URL}.");
-        }
-		}*/
 }
 
