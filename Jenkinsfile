@@ -41,10 +41,10 @@ pipeline {
            echo "started"
 			//echo "toolbelt result is  ${toolbelt}"
 	  
-          rc = bat returnStatus: true,script: "\"${toolbelt}/sfdx\" force:auth:jwt:grant --clientid ${CONNECTED_APP_CONSUMER_KEY} --username ${HUB_ORG} --jwtkeyfile ${jwt_key_file} --setdefaultdevhubusername"
+          rc = sh returnStatus: true,script: "${toolbelt}/sfdx force:auth:jwt:grant --clientid ${CONNECTED_APP_CONSUMER_KEY} --username ${HUB_ORG} --jwtkeyfile ${jwt_key_file} --setdefaultdevhubusername"
            if (rc != 0) { error 'hub org authorization failed' }
 			
-rmsg = bat returnStdout: true, script: "\"${toolbelt}/sfdx\" force:org:create --definitionfile config/project-scratch-def.json --json --setdefaultusername"
+rmsg = sh returnStdout: true, script: "${toolbelt}/sfdx force:org:create --definitionfile config/project-scratch-def.json --json --setdefaultusername"
          echo "results in rmg in values--------------------------->"+rmsg
 		echo rmsg.getClass().getName()
 		println rmsg.length()
@@ -71,7 +71,7 @@ rmsg = bat returnStdout: true, script: "\"${toolbelt}/sfdx\" force:org:create --
 	steps{
 	withCredentials([file(credentialsId: JWT_KEY_CRED_ID, variable: 'jwt_key_file')]) {
 	script{
-            rc = bat returnStatus: true, script: "\"${toolbelt}/sfdx\" force:source:push --targetusername ${SFDC_USERNAME}"
+            rc = sh returnStatus: true, script: "${toolbelt}/sfdx force:source:push --targetusername ${SFDC_USERNAME}"
             if (rc != 0)
 			{
                 error 'push failed'
@@ -86,7 +86,7 @@ rmsg = bat returnStdout: true, script: "\"${toolbelt}/sfdx\" force:org:create --
 		steps{
 	withCredentials([file(credentialsId: JWT_KEY_CRED_ID, variable: 'jwt_key_file')]) {
 	script{
-            rc = bat returnStatus: true, script: "\"${toolbelt}/sfdx\" force:data:tree:import -f data/UserDetail__c.json --targetusername ${SFDC_USERNAME}"
+            rc = sh returnStatus: true, script: "${toolbelt}/sfdx force:data:tree:import -f data/UserDetail__c.json --targetusername ${SFDC_USERNAME}"
             if (rc != 0)
 			{
                 error 'push failed'
@@ -102,11 +102,11 @@ rmsg = bat returnStdout: true, script: "\"${toolbelt}/sfdx\" force:org:create --
 	withCredentials([file(credentialsId: JWT_KEY_CRED_ID, variable: 'jwt_key_file')]) {
 	script{
 				
-				//bat "rd ${RUN_ARTIFACT_DIR}|echo y|del ${RUN_ARTIFACT_DIR}/*.xml,.json,.txt"
-				bat "if not exist ${RUN_ARTIFACT_DIR} md ${RUN_ARTIFACT_DIR}"   
+				//sh "rd ${RUN_ARTIFACT_DIR}|echo y|del ${RUN_ARTIFACT_DIR}/*.xml,.json,.txt"
+				sh "if not exist ${RUN_ARTIFACT_DIR} md ${RUN_ARTIFACT_DIR}"   
 				
 				
-				rc = bat returnStatus: true,script: "\"${toolbelt}/sfdx\" force:apex:test:run --testlevel RunLocalTests --outputdir ${RUN_ARTIFACT_DIR} --resultformat tap --targetusername ${SFDC_USERNAME}"
+				rc = sh returnStatus: true,script: "${toolbelt}/sfdx force:apex:test:run --testlevel RunLocalTests --outputdir ${RUN_ARTIFACT_DIR} --resultformat tap --targetusername ${SFDC_USERNAME}"
                 if (rc != 0) {
                     error 'apex test run failed'
                 }
@@ -120,7 +120,7 @@ rmsg = bat returnStdout: true, script: "\"${toolbelt}/sfdx\" force:org:create --
 	withCredentials([file(credentialsId: JWT_KEY_CRED_ID, variable: 'jwt_key_file')]) {
 	script{
 				junit keepLongStdio: true, testResults: 'test/*-junit.xml'
-				bat "zip -r D:/Nexus/sonatype-work/nexus/storage/Selenium_Test_Results/test.zip ${RUN_ARTIFACT_DIR}"
+				sh "zip -r D:/Nexus/sonatype-work/nexus/storage/Selenium_Test_Results/test.zip ${RUN_ARTIFACT_DIR}"
         }
 		}
 		}
@@ -130,7 +130,7 @@ rmsg = bat returnStdout: true, script: "\"${toolbelt}/sfdx\" force:org:create --
 		steps{
 	withCredentials([file(credentialsId: JWT_KEY_CRED_ID, variable: 'jwt_key_file')]) {
 	script{
-		rc = bat returnStatus: true,script: "\"${toolbelt}/sfdx\" force:org:delete -p --targetusername ${SFDC_USERNAME}"
+		rc = sh returnStatus: true,script: "${toolbelt}/sfdx force:org:delete -p --targetusername ${SFDC_USERNAME}"
                 if (rc != 0) {
                     error 'apex test run failed'
                 }
@@ -144,11 +144,11 @@ rmsg = bat returnStdout: true, script: "\"${toolbelt}/sfdx\" force:org:create --
 		steps{
 	withCredentials([file(credentialsId: JWT_KEY_CRED_ID, variable: 'jwt_key_file')]) {
 	script{
-		bat "if not exist ${MDAPI_FORMAT} md ${MDAPI_FORMAT}"
-		rc = bat returnStatus: true,script: "\"${toolbelt}/sfdx\" force:source:convert -d ${MDAPI_FORMAT}"
-		bat "git add ."
-		bat "git commit -m 'changes' "
-		bat "git push origin HEAD:master"
+		sh "if not exist ${MDAPI_FORMAT} md ${MDAPI_FORMAT}"
+		rc = sh returnStatus: true,script: "${toolbelt}/sfdx force:source:convert -d ${MDAPI_FORMAT}"
+		sh "git add ."
+		sh "git commit -m 'changes' "
+		sh "git push origin HEAD:master"
 		
 		}
 		}
@@ -159,7 +159,7 @@ rmsg = bat returnStdout: true, script: "\"${toolbelt}/sfdx\" force:org:create --
 		steps{
 	withCredentials([file(credentialsId: JWT_KEY_CRED_ID, variable: 'jwt_key_file')]) {
 	script{
-		 rc = bat returnStatus: true, script: "\"${toolbelt}/sfdx\" force:mdapi:deploy -c -d ${MDAPI_FORMAT} -u devopsmst@gmail.com -l RunAllTestsInOrg"
+		 rc = sh returnStatus: true, script: "${toolbelt}/sfdx force:mdapi:deploy -c -d ${MDAPI_FORMAT} -u devopsmst@gmail.com -l RunAllTestsInOrg"
 		 
 		}
 		}
@@ -168,7 +168,7 @@ rmsg = bat returnStdout: true, script: "\"${toolbelt}/sfdx\" force:org:create --
 	
 		stage('Actual Deployment')
 		{
-		// rc = bat returnStatus: true, script: "\"${toolbelt}/sfdx\" force:mdapi:deploy -d ${MDAPI_FORMAT} -u test-cfgk1svera0g@demo_company.net -l RunAllTestsInOrg"
+		// rc = sh returnStatus: true, script: "${toolbelt}/sfdx force:mdapi:deploy -d ${MDAPI_FORMAT} -u test-cfgk1svera0g@demo_company.net -l RunAllTestsInOrg"
 		 
 		}*/
 		
