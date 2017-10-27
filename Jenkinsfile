@@ -2,6 +2,7 @@ import groovy.json.JsonSlurperClassic
 pipeline {
 	environment 
 	{
+		
     def SFDC_USERNAME=''	
     def HUB_ORG=System.getenv("HUB_ORG_DHC")
     def SFDC_HOST=System.getenv("SFDC_HOST_DH")
