@@ -57,12 +57,12 @@ pipeline {
 			echo "assign values";
             SFDC_USERNAME=robj.result.username
 			println SFDC_USERNAME
-            robj = null */
+            robj = null
 		
         }
 		}
 		}
-		}
+		} */
 		
 	
 	/*stage('Push To Test Org'){
