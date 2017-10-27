@@ -9,7 +9,7 @@ pipeline {
 	def emailRecipients=System.getenv("emailRecipients")
 	def rmgsplit=''
     def CONNECTED_APP_CONSUMER_KEY=System.getenv("CONNECTED_APP_CONSUMER_KEY_DH")
-  // def toolbelt =com.cloudbees.jenkins.plugins.customtools.CustomTool("toolbelt")
+  def toolbelt =com.cloudbees.jenkins.plugins.customtools.CustomTool("toolbelt")
    //System.getenv("toolbelt")
    //
 	
@@ -22,7 +22,7 @@ pipeline {
        checkout scm 
 	  script
 	   {
-	   echo "${emailRecipients}"
+	   echo toolbelt
 		echo HUB_ORG
 		echo SFDC_HOST
 		echo JWT_KEY_CRED_ID
